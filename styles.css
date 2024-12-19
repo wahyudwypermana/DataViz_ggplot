@@ -1,0 +1,22 @@
+/* styles.css */
+
+body {
+    background-color: #f3e5f5; /* Warna latar belakang ungu muda */
+    color: #4a148c; /* Warna teks ungu gelap */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #6a1b9a; /* Warna judul ungu */
+}
+
+a {
+    color: #8e24aa; /* Warna tautan ungu */
+}
+
+a:hover {
+    color: #ab47bc; /* Warna tautan saat hover */
+}
+
+p {
+    line-height: 1.6; /* Jarak antar paragraf */
+}
