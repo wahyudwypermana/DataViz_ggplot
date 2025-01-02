@@ -30,6 +30,43 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
+```{r}
+#library ggplot2
+library(ggplot2)
+data <-data.frame(x = rnorm(100),y=rnorm(100))
+ggplot(data, aes(x = x, y = y))+
+  geom_point()+
+  labs(title = "Point Titik", x = "Sumbu X", y = "Sumbu Y") +
+  theme_classic()
+```
+
+```{r}
+data <- data.frame(x = rnorm(100), y = rnorm(100), grup = sample(c("A", "B", "C", "D"), 100, replace = TRUE))
+ggplot(data, aes(x = x, y = y, color = grup))+
+  geom_point()+
+  facet_wrap(~grup)+
+  scale_color_manual(values = c("A" = "blue", "B" = "red", "C" = "yellow", "D" = "black"))+
+  theme_dark()+
+  labs(title = "Plot titik dengan warna berdasarkan Grup",
+       x = "Nilai X",
+       y = "Nilai Y",
+       color = "Grup")
+```
+
+
+```{r}
+library(readr)
+lizard <- read.csv("lizards.csv")
+View(lizard)
+```
+```{r}
+library(ggplot2)
+ggplot(lizard, aes(x = total_length, y = weight))+
+  geom_point()
+  labs(title = "plot titik",x = "total_length", y = "weight")+
+  theme_classic()
+```
+
 
 ```{r cars}
 summary(cars)

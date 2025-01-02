@@ -1,22 +1,43 @@
-/* styles.css */
+/* style.css */
 
+/* Mengatur warna latar belakang dan teks */
 body {
-    background-color: #f3e5f5; /* Warna latar belakang ungu muda */
-    color: #4a148c; /* Warna teks ungu gelap */
+    background-color: #f8d3d3; /* Warna latar belakang jambon */
+    color: #333; /* Warna teks */
 }
 
+/* Mengatur warna judul */
 h1, h2, h3, h4, h5, h6 {
-    color: #6a1b9a; /* Warna judul ungu */
+    color: #d5006d; /* Warna judul */
 }
 
+/* Mengatur warna tautan */
 a {
-    color: #8e24aa; /* Warna tautan ungu */
+    color: #d5006d; /* Warna tautan */
+    text-decoration: none; /* Menghilangkan garis bawah */
 }
 
 a:hover {
-    color: #ab47bc; /* Warna tautan saat hover */
+    text-decoration: underline; /* Garis bawah saat hover */
 }
 
+/* Mengatur tabel */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #d5006d; /* Warna border tabel */
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f1a7a7; /* Warna latar belakang header tabel */
+}
+
+/* Mengatur paragraf */
 p {
-    line-height: 1.6; /* Jarak antar paragraf */
+    line-height: 1.6; /* Jarak antar baris */
 }
