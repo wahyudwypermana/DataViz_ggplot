@@ -1,6 +1,6 @@
 ---
-title: "My Document"
-author: "Deden Istiawan-Institut Teknologi Statistika dan Bisnis Muhammadiya"
+title: "Visualisasi Data Menggunakan ggplot2"
+author: "Wahyu Dwy Permana-Institut Teknologi Statistika dan Bisnis Muhammadiya"
 date: "`r Sys.Date()`"
 output: 
   html_document:
@@ -23,23 +23,57 @@ text-align: justify}
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# 1 Pengantar ggplot2
+ggplot2 adalah salah satu paket visualisasi data paling populer di R, yang dirancang untuk mempermudah pembuatan grafik berkualitas tinggi dengan pendekatan yang sistematis dan fleksibel. Dikembangkan oleh Hadley Wickham pada tahun 2005, ggplot2 berbasis pada konsep "Grammar of Graphics" yang memperlakukan grafik sebagai lapisan-lapisan komponen, seperti data, estetika, geometri, dan skala. Pendekatan ini memungkinkan pengguna untuk dengan mudah menyesuaikan dan menggabungkan elemen-elemen visual untuk menghasilkan visualisasi yang informatif dan estetis.
 
-# R Markdown
+Paket ini mendukung berbagai jenis grafik, termasuk scatter plots, bar charts, line graphs, box plots, dan masih banyak lagi. Salah satu keunggulan ggplot2 adalah kemampuannya untuk menangani data besar dan kompleks, serta menyediakan fungsionalitas bawaan untuk memfasilitasi eksplorasi data secara interaktif. Dengan fitur seperti facetting, pengguna dapat dengan mudah membuat visualisasi multivariat untuk membandingkan data dalam berbagai kategori. Hal ini menjadikan ggplot2 sangat relevan untuk analisis data eksploratif maupun komunikasi data.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents [@deCarvalho2012]. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Selain fleksibilitas dan kekuatan, ggplot2 juga memiliki dokumentasi yang sangat lengkap serta dukungan dari komunitas yang aktif. Pengguna dapat menemukan banyak sumber daya seperti tutorial, buku panduan, dan forum diskusi untuk mempelajari dan mengoptimalkan penggunaan ggplot2. Dengan kombinasi fitur yang kuat dan kemudahan penggunaan, ggplot2 telah menjadi alat standar dalam visualisasi data di bidang statistik, sains data, dan penelitian.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+# 2 Dasar Dasar ggplot2
+ggplot2 adalah salah satu pustaka visualisasi data di R yang dikembangkan oleh Hadley Wickham. Pustaka ini didasarkan pada konsep Grammar of Graphics, sebuah pendekatan sistematis untuk membuat visualisasi data. Dengan menggunakan ggplot2, pengguna dapat membuat grafik yang menarik, informatif, dan mudah dimodifikasi.
+
+## 2.1 Struktur dasar dari ggplot2 melibatkan tiga komponen utama:
+
+1. Data: Data yang akan divisualisasikan.
+
+2. Aesthetic Mappings (aes): Pemetaan variabel data ke elemen visual seperti warna, bentuk, atau sumbu.
+
+3. Geometries (geom): Jenis grafik yang akan dibuat, seperti garis, titik, atau batang.
+
+## 2.2 Paket Dataset
+Instalasi ggplot2
+Jika Anda belum menginstal ggplot2, Anda dapat melakukannya dengan menggunakan perintah berikut: install.packages("ggplot2")
+
+Setelah diinstal, Anda perlu memuat paket tersebut ke dalam sesi R Anda:
+```{r}
+library(ggplot2)
+```
+
+## 2.3 Membuat Data Frame
+membuat sebuah data frame bernama data yang berisi dua kolom: x dan y. Kolom x diisi dengan 100 angka acak yang dihasilkan dari distribusi normal (mean = 0, standar deviasi = 1) menggunakan fungsi rnorm(100), dan kolom y juga diisi dengan 100 angka acak dari distribusi normal yang sama.
+```{r}
+data <-data.frame(x = rnorm(100),y=rnorm(100))
+```
+
+## 2.4Membuat Judul,Plot,dan Tema
+ membuat visualisasi data dengan label sumbu x ("Sumbu X") serta sumbu y ("Sumbu Y") 
 
 ```{r}
-#library ggplot2
-library(ggplot2)
-data <-data.frame(x = rnorm(100),y=rnorm(100))
 ggplot(data, aes(x = x, y = y))+
+  
+  #membuat plot titik
   geom_point()+
+ 
+   #menambahkan plot judul dan sumbu
   labs(title = "Point Titik", x = "Sumbu X", y = "Sumbu Y") +
+
+  #memilih tema
   theme_classic()
 ```
 
+## 2.5 Faceting
+Fitur ini memungkinkan pembuatan subplot berdasarkan kategori dalam data.
 ```{r}
 data <- data.frame(x = rnorm(100), y = rnorm(100), grup = sample(c("A", "B", "C", "D"), 100, replace = TRUE))
 ggplot(data, aes(x = x, y = y, color = grup))+
@@ -53,19 +87,33 @@ ggplot(data, aes(x = x, y = y, color = grup))+
        color = "Grup")
 ```
 
+# 3 Mengelola Data CSV
+Sebelum mengelola data dari file CSV, pastikan file tersebut berada di lokasi yang benar dan memiliki format yang sesuai. Anda dapat menentukan direktori kerja menggunakan setwd() jika diperlukan, serta memastikan bahwa paket yang dibutuhkan, seperti dplyr dan readr, telah terinstal dan dimuat. Selanjutnya, periksa struktur data untuk memastikan bahwa data terorganisir dengan baik, serta cek nama dan tipe kolom untuk memastikan konsistensi. Setelah itu, baca data menggunakan fungsi yang sesuai, seperti read_csv(), dan tinjau beberapa baris awal dengan head() untuk memastikan bahwa data telah terbaca dengan benar dan siap untuk diolah.
 
+## 3.1 Membaca Data CSV
 ```{r}
 library(readr)
 lizard <- read.csv("lizards.csv")
 View(lizard)
 ```
+![foto](D:/DataViz_ggplot/foto.png)
+
+## 3.2 Mengelola Data Length dan Weight
+
 ```{r}
 library(ggplot2)
 ggplot(lizard, aes(x = total_length, y = weight))+
-  geom_point()
+  geom_point()+
   labs(title = "plot titik",x = "total_length", y = "weight")+
   theme_classic()
 ```
+
+
+# R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents [@deCarvalho2012]. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 
 ```{r cars}

@@ -1,43 +1,20 @@
-/* style.css */
-
-/* Mengatur warna latar belakang dan teks */
 body {
-    background-color: #f8d3d3; /* Warna latar belakang jambon */
-    color: #333; /* Warna teks */
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Warna latar belakang */
+    color: black; /* Mengubah warna teks menjadi hitam */
 }
-
-/* Mengatur warna judul */
-h1, h2, h3, h4, h5, h6 {
-    color: #d5006d; /* Warna judul */
+h1 {
+    color: blue; /* Mengubah warna judul menjadi biru */
 }
-
-/* Mengatur warna tautan */
-a {
-    color: #d5006d; /* Warna tautan */
-    text-decoration: none; /* Menghilangkan garis bawah */
-}
-
-a:hover {
-    text-decoration: underline; /* Garis bawah saat hover */
-}
-
-/* Mengatur tabel */
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th, td {
-    border: 1px solid #d5006d; /* Warna border tabel */
-    padding: 8px;
-    text-align: left;
-}
-
-th {
-    background-color: #f1a7a7; /* Warna latar belakang header tabel */
-}
-
-/* Mengatur paragraf */
 p {
-    line-height: 1.6; /* Jarak antar baris */
+    color: black; /* Mengubah warna paragraf menjadi hitam */
+    font-size: 16px;
+    line-height: 1.5;
+}
+.custom-table th {
+    background-color: blue; /* Mengubah warna latar belakang header tabel menjadi biru */
+    color: white; /* Mengubah warna teks header tabel menjadi putih */
+}
+.custom-table td {
+    color: black; /* Mengubah warna teks sel tabel menjadi hitam */
 }
