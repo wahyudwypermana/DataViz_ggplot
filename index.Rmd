@@ -108,6 +108,58 @@ ggplot(lizard, aes(x = total_length, y = weight))+
   theme_classic()
 ```
 
+#
+```{r}
+#Jitter
+ggplot(lizard, aes(x = total_length, y = weight))+
+  geom_jitter()+
+  labs(title = "plot titik - title lizard",x = "total_length", y = "coomon_name")
+```
+
+
+```{r}
+#Bar
+library(ggplot2)
+ggplot(lizard, aes(y = common_name))+
+  geom_bar()+
+  labs(title = "plot titik - title lizard",x = "total_length", y = "coomon_name")
+```
+
+
+```{r}
+#Histogram warna
+library(ggplot2)
+ggplot(lizard, aes(x = weight))+
+  geom_histogram(color = "red", fill = "purple" )+
+  labs(title = "dinding lizard", x = "weight", y = "count")
+```
+
+
+```{r}
+#shape
+library(ggplot2)
+ggplot(lizard, aes(x = total_length, y = weight,color))+
+  geom_point(color = "blue", shape = 17, size = 10 )+
+  labs(title = "plot titik warna biru",x = "total_length", y = "weight")
+```
+
+
+
+```{r}
+#common_name
+library(ggplot2)
+ggplot(lizard, aes(x = total_length, y = weight, color = common_name)) +
+  geom_point(shape = 17, size = 3) +  # Warna akan ditentukan oleh common_name
+  labs(title = "Plot Titik Berdasarkan Common Name", x = "Total Length", y = "Weight") +
+  theme_minimal()  # Menggunakan tema minimal untuk tampilan yang lebih bersih
+```
+
+
+
+
+
+
+
 
 # R Markdown
 
