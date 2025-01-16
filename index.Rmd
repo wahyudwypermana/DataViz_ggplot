@@ -220,8 +220,6 @@ print(gapminder_point)
 
 
 ## 5.5
-..
-
 ```{r}
 gapminder_point <- ggplot(
   gapminder,
