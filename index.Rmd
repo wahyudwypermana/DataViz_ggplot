@@ -108,7 +108,7 @@ ggplot(lizard, aes(x = total_length, y = weight))+
   theme_classic()
 ```
 
-#
+# 4
 ```{r}
 #Jitter
 ggplot(lizard, aes(x = total_length, y = weight))+
@@ -116,7 +116,7 @@ ggplot(lizard, aes(x = total_length, y = weight))+
   labs(title = "plot titik - title lizard",x = "total_length", y = "coomon_name")
 ```
 
-
+## 4.1
 ```{r}
 #Bar
 library(ggplot2)
@@ -125,7 +125,7 @@ ggplot(lizard, aes(y = common_name))+
   labs(title = "plot titik - title lizard",x = "total_length", y = "coomon_name")
 ```
 
-
+## 4.2
 ```{r}
 #Histogram warna
 library(ggplot2)
@@ -134,7 +134,7 @@ ggplot(lizard, aes(x = weight))+
   labs(title = "dinding lizard", x = "weight", y = "count")
 ```
 
-
+## 4.3
 ```{r}
 #shape
 library(ggplot2)
@@ -144,7 +144,7 @@ ggplot(lizard, aes(x = total_length, y = weight,color))+
 ```
 
 
-
+## 4.4
 ```{r}
 #common_name
 library(ggplot2)
@@ -155,8 +155,87 @@ ggplot(lizard, aes(x = total_length, y = weight, color = common_name)) +
 ```
 
 
+# 5 Animasi Grafik dengan gganimate
+```{r}
+library(gapminder)
+library(ggplot2)
+library(gganimate)
+```
+
+## 5.1
+```{r}
+data = gapminder
+data
+```
+
+## 5.2
+```{r}
+library(gapminder)
+library(ggplot2)
+gapminder_plot <- ggplot(
+  gapminder, 
+  aes(x = gdpPercap, y=lifeExp)
+  ) +
+  geom_point(alpha = 0.6) +
+  scale_x_log10() +
+  labs(x = "GDP per capita", y = "Life expectancy")
+gapminder_plot
+```
 
 
+## 5.3
+```{r}
+gapminder_plot <- ggplot(
+  gapminder, 
+  aes(x = gdpPercap, y=lifeExp, size = pop, colour = continent)
+  ) +
+  geom_point(alpha = 0.6) +
+  scale_x_log10() +
+  scale_color_viridis_d(option = "viridis") +
+  labs(x = "GDP per capita", y = "Life expectancy")
+gapminder_plot
+```
+
+
+
+```{r}
+library(gapminder)
+library(ggplot2)
+
+gapminder_point <- ggplot(
+  gapminder,
+  aes(x = gdpPercap, y = lifeExp, color = continent)  # Menambahkan color berdasarkan continent
+) +
+  geom_point(alpha = 0.6) +  # Memperbaiki alpha
+  scale_x_log10() +  # Menggunakan skala logaritmik untuk sumbu x
+  labs(
+    title = "Plot Titik Berdasarkan GDP per Kapita dan Harapan Hidup",
+    x = "GDP per Kapita",
+    y = "Harapan Hidup"
+  )
+
+# Menampilkan plot
+print(gapminder_point)
+```
+
+
+
+```{r}
+gapminder_point <- ggplot(
+  gapminder,
+  aes(x = gdpPercap, y = lifeExp, size = pop, color = continent)  
+) +
+  geom_point(alpha = 0.6) + 
+  scale_x_log10() + 
+  scale_color_viridis_d( option = "D")
+  labs(
+    title = "Plot Titik Berdasarkan GDP per Kapita dan Harapan Hidup",
+    x = "GDP per Kapita",
+    y = "Harapan Hidup"
+  )
+
+print(gapminder_point)
+```
 
 
 
