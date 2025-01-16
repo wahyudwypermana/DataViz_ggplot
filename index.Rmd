@@ -242,7 +242,7 @@ animate(animated_gapminder, nframes = 50, renderer = gifski_renderer("animated_g
 
 
 
-## 5.6
+# 6
 ```{r}
 library(ggplot2)
 library(gganimate)
@@ -255,36 +255,23 @@ gapminder_plot <- ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, size = pop, 
   labs(
     x = "GDP per Capita",
     y = "Life Expectancy",
-    title = "Life Expectancy vs. GDP per Capita (1952-2007)"
+    title = "Year: {frame_time}"
   )
 
-# Membuat plot animasi
+# Menambahkan animasi
 animated_plot <- gapminder_plot +
-  facet_wrap(~continent) +
   transition_time(year) +
-  labs(title = "Year: {frame_time}")
+  shadow_mark(alpha = 0.3, size = 0.5)
 
 # Menyimpan animasi sebagai GIF
 animate(
   animated_plot,
-  duration = 10, 
-  fps = 10, 
-  width = 800, 
-  height = 600,
+  nframes = 100, fps = 10, width = 800, height = 600,
   renderer = gifski_renderer("gapminder_animation.gif")
-) +
-knitr::include_graphics("gapminder_animation.gif")
+)
+
 ```
 
-
-## 5.7
-```{r}
-gapminder_plot + 
-  transition_time(year) +
-  labs(title = "Year: {frame_time}") +
-  shadow_wake(wake_length = 0.1, alpha = FALSE)
-animate(animated_gapminder, nframes = 50, renderer = gifski_renderer("animated_gapminder.gif"))
-```
 
 
 
