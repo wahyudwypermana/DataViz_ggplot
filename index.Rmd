@@ -273,6 +273,7 @@ animate(
   height = 600,
   renderer = gifski_renderer("gapminder_animation.gif")
 )
+knitr::include_graphics("gapminder_animation.gif")
 
 ```
 
