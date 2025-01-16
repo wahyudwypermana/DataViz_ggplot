@@ -272,18 +272,18 @@ animate(
   width = 800, 
   height = 600,
   renderer = gifski_renderer("gapminder_animation.gif")
-)
+) +
 knitr::include_graphics("gapminder_animation.gif")
 ```
 
 
-
-
+## 5.7
 ```{r}
 gapminder_plot + 
   transition_time(year) +
   labs(title = "Year: {frame_time}") +
   shadow_wake(wake_length = 0.1, alpha = FALSE)
+animate(animated_gapminder, nframes = 50, renderer = gifski_renderer("animated_gapminder.gif"))
 ```
 
 
