@@ -241,7 +241,7 @@ transition_time(year) + labs(title = "gapminder animated")
 
 animate(animated_gapminder, nframes = 50, renderer = gifski_renderer("animated_gapminder.gif"))
 ```
-
+## 5.6
 
 ```{r}
 library(ggplot2)
