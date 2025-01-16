@@ -219,7 +219,7 @@ print(gapminder_point)
 ```
 
 
-
+## 5.4
 ```{r}
 gapminder_point <- ggplot(
   gapminder,
@@ -234,7 +234,10 @@ gapminder_point <- ggplot(
     y = "Harapan Hidup"
   )
 
-print(gapminder_point)
+animated_gapminder <- gapminder_point +
+transition_time(year) + labs(title = "gapminder animated")
+
+animate(animated_gapminder, nframes = 50, renderer = gifski_renderer("animated_gapminder.gif"))
 ```
 
 
