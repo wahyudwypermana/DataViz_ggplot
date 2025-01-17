@@ -273,6 +273,36 @@ animate(
 ```
 
 
+## 6.1
+```{r}
+library(ggplot2)
+library(gganimate)
+library(gapminder)
+
+# Membuat plot dasar
+gapminder_plot <- ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, size = pop, color = continent)) +
+  geom_point(alpha = 0.7, show.legend = TRUE) +
+  scale_x_log10() +
+  labs(
+    x = "GDP per Capita",
+    y = "Life Expectancy",
+    title = "Year: {frame_time}"
+  )
+
+# Menambahkan animasi
+animated_plot <- gapminder_plot +
+  transition_time(year) +
+  shadow_mark(alpha = 0.3, size = 0.5)
+
+# Menyimpan animasi sebagai GIF
+animate(
+  animated_plot,
+  nframes = 100, fps = 10, width = 800, height = 600,
+  renderer = gifski_renderer("gapminder_animation.gif")
+)
+
+```
+
 
 
 # R Markdown
